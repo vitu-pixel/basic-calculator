@@ -1,48 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <title>Calculator</title>
-    </head>
-    <body>
-        <div class="container">
-            <div class="calculator">
-                <form>
-            <div class="display">
-                <input type="text" name="display" >
-            </div>
-            <div>
-            <input type="button" value="AC" class="power" onclick="display.value =''">
-            <input type="button" value="DEL" class="dell" onclick="display.value = display.value.toString().slice(0, -1) ">
-            <input type="button" value="/" class="sign" onclick="display.value += '/'">
-            </div>
-         <div >
-                <input type="button" value="7" onclick="display.value += '7'">
-                <input type="button" value="8"onclick="display.value += '8'">
-                <input type="button" value="9"onclick="display.value += '9'">
-                <input type="button" value="*" class="sign"  onclick="display.value += '*'">
-            </div>
-         <div>
-                    <input type="button" value="4"onclick="display.value += '4'">
-                    <input type="button" value="5"onclick="display.value += '5'">
-                    <input type="button" value="6"onclick="display.value += '6'">
-                    <input type="button" value="-" class="sign" onclick="display.value += '-'">
-             </div>
-             <div>
-                <input type="button" value="1"onclick="display.value += '1'">
-                <input type="button" value="2"onclick="display.value += '2'">
-                <input type="button" value="3"onclick="display.value += '3'">
-                <input type="button" value="+" class="sign" onclick="display.value += '+'" >
-         </div>
-         <div>
-            <input type="button" value="0" class="dell" onclick="display.value += '0'">
-            <input type="button" value="."onclick="display.value += '.'">
-            <input type="button" value="=" class="equal" onclick="display.value =eval(display.value) ">
-         </div>
-         </form>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <form>
+                <div class="display">
+                    <input type="text" name="display" value="0" readonly>
+                </div>
+                <div>
+                    <input type="button" value="AC" class="power" onclick="document.forms[0].display.value = '0'">
+                    <input type="button" value="DEL" class="dell" onclick="document.forms[0].display.value = document.forms[0].display.value.toString().slice(0, -1)">
+                    <input type="button" value="/" class="sign" onclick="insertValue('/')">
+                </div>
+                <div>
+                    <input type="button" value="7" onclick="insertValue('7')">
+                    <input type="button" value="8" onclick="insertValue('8')">
+                    <input type="button" value="9" onclick="insertValue('9')">
+                    <input type="button" value="*" class="sign" onclick="insertValue('*')">
+                </div>
+                <div>
+                    <input type="button" value="4" onclick="insertValue('4')">
+                    <input type="button" value="5" onclick="insertValue('5')">
+                    <input type="button" value="6" onclick="insertValue('6')">
+                    <input type="button" value="-" class="sign" onclick="insertValue('-')">
+                </div>
+                <div>
+                    <input type="button" value="1" onclick="insertValue('1')">
+                    <input type="button" value="2" onclick="insertValue('2')">
+                    <input type="button" value="3" onclick="insertValue('3')">
+                    <input type="button" value="+" class="sign" onclick="insertValue('+')">
+                </div>
+                <div>
+                    <input type="button" value="0" onclick="insertValue('0')">
+                    <input type="button" value="." onclick="insertValue('.')">
+                    <input type="button" value="=" class="equal" onclick="document.forms[0].display.value = eval(document.forms[0].display.value)">
+                </div>
+            </form>
         </div>
-        </div>
-    </body>
+    </div>
+
+    <script>
+        function insertValue(value) {
+            var display = document.forms[0].display;
+            if (display.value === '0') {
+                display.value = value; 
+            } else {
+                display.value += value; 
+            }
+        }
+    </script>
+</body>
 </html>
